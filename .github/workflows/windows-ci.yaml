@@ -144,7 +144,7 @@ jobs:
           ( php "%PHPROOT%\phpunit" -d memory_limit=-1 -c %CD%\test\phpunit\phpunittest.xml "test\phpunit\AllTests.php" & call doskey /exename=err err=%%^^errorlevel%% ) | "${{ env.TEE }}" "${{ env.PHPUNIT_LOG }}"
           for /f "tokens=2 delims==" %%A in ('doskey /m:err') do EXIT /B %%A
       - name: Convert Raw Log to Annotations
-        uses: mdeweerd/logToCheckStyle@v2024.2.9
+        uses: mdeweerd/logToCheckStyle@v2024.3.1
         if: ${{ failure() }}
         with:
           in: ${{ env.PHPUNIT_LOG }}
